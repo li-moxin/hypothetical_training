@@ -54,7 +54,7 @@ PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/tag_op python tag_op/trainer.py --data_dir 
 Use this command to inference the results on the validationset of TAT-QA&HQA, and the stress test. Answers will be saved at `tag_op/results/answer_dev.json`. 
 
 ```bash
-PYTHONPAfTH=$PYTHONPATH:$(pwd) python tag_op/predictor.py --data_dir dataset/data_nhq_triplet --test_data_dir dataset/[data_nhq_triplet/stress_test] --save_dir tag_op/results --eval_batch_size 16 --model_path tag_op/model_ow001_hw001_60epoch 
+PYTHONPATH=$PYTHONPATH:$(pwd) python tag_op/predictor.py --data_dir dataset/data_nhq_triplet --test_data_dir dataset/[data_nhq_triplet/stress_test] --save_dir tag_op/results --eval_batch_size 16 --model_path tag_op/model_ow001_hw001_60epoch 
 ```
 
 # Reference
