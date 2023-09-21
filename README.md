@@ -13,7 +13,7 @@ According to the paper, there are three types of questions used for hypothetical
 - The hypothetical questions with changed answers from `TAT-HQA`: released in [this repo](https://github.com/NExTplusplus/TAT-HQA). We also use the answer types of `span`, `multi-span`, and `count`.  
 - The hypothetical questions with unchanged answers, edited from TAT-HQA. We release our created data in `dataset/TAT-NHQA`. The `uid` of TAT-NHQA appends `_nhqa` to the corresponding TAT-HQA question uid, and the `original_question_uid` refers to the corresponding TAT-QA question uid. 
 
-The training data statistics are shown as below. Note that not all factual questions have the two hypothetical questions. For validation set, we utilize the released validation set of TAT-QA&HQA for all compared methods, also filtered by the answer types, containing 1055 questions in total. 
+The training data statistics are shown as below. Note that not all factual questions have the two hypothetical questions. For validation set, we utilize the official validation set of TAT-QA&HQA for all compared methods, also filtered by the answer types, containing 1055 questions in total. 
 
 | Data split | TAT-QA | TAT-HQA | TAT-NHQA|
 | --- | --- | --- | --- |
@@ -24,7 +24,7 @@ By running the data preprocessing steps in TAT-QA, we provide the processed pick
 
 ## Testing data:
 Apart from the validation set of TAT-QA&HQA, we also create a stress test to evaluate the model's reliance on spurious correlations. 
-- stress test: our created stress test data by minimally editing the factual TAT-QA questions to change the answer. There are 921 questions in total. The original json file and processed pickle file are saved in `dataset/stress test`. 
+- stress test: our created stress test data by minimally editing the factual TAT-QA questions to change the answer. There are 921 questions in total. The original json file and processed pickle file are saved in `dataset/stress_test`. 
 
 # Trainining & Inference
 
@@ -35,7 +35,7 @@ Firstly, we train a base model using a simple mix of TAT-QA, TAT-HQA and TAT-NHQ
 ```bash
 python convert_base_model_training_data.py
 ```
-Then, run the following command to train the base model `model_nhq_mix_80epoch`. 
+Then, run the following command to train the base model `model_nhq_mix_b16_80epoch`. 
 
 ```bash
 PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/tag_op python tag_op/trainer.py --data_dir dataset/data_nhq_mix --test_dir dataset/data_nhq_mix --save_dir tag_op/model_nhq_mix_b16_80epoch --batch_size 16 --eval_batch_size 16 --oq_weight 0 --hq_weight 0 --do_finetune 0 --max_epoch 80 --roberta_model roberta.large
