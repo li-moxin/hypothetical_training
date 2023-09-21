@@ -35,7 +35,7 @@ Firstly, we train a base model using a simple mix of TAT-QA, TAT-HQA and TAT-NHQ
 ```bash
 python convert_base_model_training_data.py
 ```
-Then, run the following command to train the base model `model_nhq_mix_80e`. 
+Then, run the following command to train the base model `model_nhq_mix_80epoch`. 
 
 ```bash
 PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/tag_op python tag_op/trainer.py --data_dir dataset/data_nhq_mix --test_dir dataset/data_nhq_mix --save_dir tag_op/model_nhq_mix_b16_80epoch --batch_size 16 --eval_batch_size 16 --oq_weight 0 --hq_weight 0 --do_finetune 0 --max_epoch 80 --roberta_model roberta.large
