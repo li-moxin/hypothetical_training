@@ -20,7 +20,7 @@ The training data statistics are shown as below. Note that not all factual quest
 | # Training | 7698 | 1074 | 709 |  
 | # Validation | 938  | 107 | 0 | 
 
-By running the data preprocessing steps in TAT-QA, we provide the processed pickle files in `dataset/data_nhq_triplet`, which can be directly used to run the training code. The three types of data are grouped as triplets. 
+By running the data preprocessing steps in TAT-QA, we provide the processed pickle files in `dataset/data_nhq_triplet`, which can be directly used to run the training code. The three types of data are grouped as triplets. Remember to unzip `dataset/data_nhq_triplet/tagop_roberta_cached_train.pkl.zip`. 
 
 ## Testing data:
 Apart from the validation set of TAT-QA&HQA, we also create a stress test to evaluate the model's reliance on spurious correlations. 
